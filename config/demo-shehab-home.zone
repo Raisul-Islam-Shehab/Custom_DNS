@@ -1,0 +1,24 @@
+$TTL 2d
+
+$ORIGIN demo.shehab.home.
+
+@               IN              SOA             ns.demo.shehab.home.            info.shehab.home. (
+                                                1705202300
+                                                12h
+                                                15m
+                                                3w
+                                                2h
+                                                )
+
+                IN              NS              ns.demo.shehab.home. 
+
+ns              IN              A               127.0.0.53
+
+
+
+srv-prod-1      IN              A               10.21.0.4
+srv-prod-2      IN              A               10.21.2.3
+
+
+
+

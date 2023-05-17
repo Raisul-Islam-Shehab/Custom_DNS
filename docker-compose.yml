@@ -7,8 +7,11 @@ services:
     environment:
       - BIND9_USER=root
       - TZ=UTC
-    expose:
-      - "53"
+    # expose:
+    #   - "53"
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
     volumes:
       - ./config:/etc/bind
     restart: always
