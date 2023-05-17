@@ -1,17 +1,28 @@
-version: '3'
+version: "3"
 
 services:
   bind9:
-    container_name: dns-demo-2
+    container_name: dns-container
     image: ubuntu/bind9:latest
     environment:
       - BIND9_USER=root
       - TZ=UTC
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+    expose:
+      - "53"
     volumes:
       - ./config:/etc/bind
     restart: always
 
-    
+  demo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: node-image
+    container_name: node-container
+    ports:
+      - "5000:3000"
+    depends_on:
+      - bind9
+    volumes:
+      - ./data.html:/app/data.html
+      - ./etc/resolv.conf:/etc/resolv.conf:ro
